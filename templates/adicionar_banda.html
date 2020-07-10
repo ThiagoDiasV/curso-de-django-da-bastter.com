@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <h1>Adicione bandas ao nosso banco de bandas abaixo</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {%for field in form %}
+            <div class="form-group">
+                {{ field.label }}
+                {{ field|attr:"class:form-control" }}
+            </div>
+        {% endfor %}
+        <input class="btn btn-primary btn-block" type="submit" value="Adicionar banda">
+    </form>
+{% endblock %}

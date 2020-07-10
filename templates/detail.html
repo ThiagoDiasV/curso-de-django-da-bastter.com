@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ banda.nome }}</h1>
+    <p>Integrantes: {{ banda.integrantes }}</p>
+    <p>Ano de fundação: {{ banda.ano_fundacao }}</p>
+    {% if albuns %}
+        <h2>Albuns da banda {{ banda.nome }}</h2>
+        <ul class="list-group pb-4">
+            {% for album in albuns %}
+                <li class="list-group-item">{{ album.nome }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{{banda.nome}} não tem albuns ainda!</p>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'editar' pk=banda.id %}">Editar banda</a>
+    <a class="btn btn-danger" href="{% url 'apagar' pk=banda.id %}">Apagar banda</a>
+    <a class="btn btn-success" href="{% url 'criar_album' pk=banda.id %}">Adicionar album</a>
+{% endblock %}

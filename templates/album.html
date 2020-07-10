@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Albuns no nosso banco de dados</h1>
+    {% if albuns %}
+        <ul class="list-group">
+        {% for album in albuns %}
+            <li class="list-group-item">{{ album.nome }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

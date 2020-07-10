@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h1>Spotify Fake</h1>
+    <h2>Bem-vindos ao Spotify Fake da Bastter.com</h2>
+    <h3>Vejam as bandas que temos em nossa base de dados: </h3>
+    {% if bandas %}
+        <ul class="list-group">
+            {% for banda in bandas %}
+            <li class="list-group-item"><a href="{% url 'detail' pk=banda.id %}">{{ banda.nome }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não tem nenhuma banda pra mostrar. Tente novamente mais tarde.</p>
+    {% endif %}
+{% endblock %}
